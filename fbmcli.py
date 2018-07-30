@@ -6,7 +6,7 @@ import tzlocal
 local_timezone = tzlocal.get_localzone()  # get timezone
 
 
-def tstostring(timestamp, tz=local_timezone):
+def timestamp_to_string(timestamp, tz=local_timezone):
     """Converts a timestamp string to a human readable string"""
     date_string = int(float(timestamp))/1000
     date_string = datetime.fromtimestamp(date_string, tz)
@@ -69,7 +69,7 @@ chat = client.fetchThreadMessages(selected_thread.uid)
 chat.reverse()
 
 for message in chat:
-    print(tstostring(message.timestamp) + " " + names.get(message.author) + ": " + message.text)
+    print(timestamp_to_string(message.timestamp) + " " + names.get(message.author) + ": " + message.text)
 
 client.logout()
 
