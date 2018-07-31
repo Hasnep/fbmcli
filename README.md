@@ -27,7 +27,7 @@ Currently uses a file called fbconfig.py to load configs.
 * Show names for:
     * Only the first message in a group
     * Every message
-#### Dates
+### Dates
 * Show dates:
     * Only when the date changes
     * Every message
