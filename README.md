@@ -8,6 +8,7 @@ Currently uses a file called fbconfig.py to load configs.
 * `/react` or `/r` - react to a message
 * `/like large/medium/small` or `/l l/m/s` - send a like
 * `/config` or `/c` - refresh configs
+* `/quit` or `/q` - quit
 
 ## Configs (none implemented yet)
 Default options first.
