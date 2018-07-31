@@ -3,13 +3,13 @@ A Facebook Messenger Command-line Interface written in Python.
 
 Currently uses a file called fbconfig.py to load configs.
 
-# Configs (none implemented yet)
-## Login
+## Configs (none implemented yet)
+### Login
 * Log in with:
     * Cookies with password fallback
     * Password
     * Username and password
-## Message info
+### Message info
 * Align my messages:
     * Left
     * Right
@@ -27,7 +27,7 @@ Currently uses a file called fbconfig.py to load configs.
 * Show names for:
     * Only the first message in a group
     * Every message
-### Dates
+#### Dates
 * Show dates:
     * Only when the date changes
     * Every message
@@ -36,7 +36,7 @@ Currently uses a file called fbconfig.py to load configs.
     * Only after `x` minutes of inactivity
     * Every message
     * Do not show
-## Special messages
+### Special messages
 * Show emojis as:
     * Unicode emojis
     * Unicode descriptions
@@ -54,7 +54,7 @@ Currently uses a file called fbconfig.py to load configs.
 * Show stickers as:
     * Description
     * Do not show
-## Notifications
+### Notifications
 * Show notifications:
     * Do not show
     * Show W10 notifications
