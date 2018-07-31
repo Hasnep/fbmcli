@@ -16,6 +16,11 @@ Default options first.
     * Cookies with password fallback
     * Password
     * Username and password
+### Choose thread
+* Show `x` threads in list
+* Show most recent message next to thread name:
+    * Show
+    * Do not show
 ### Message info
 * Align my messages:
     * Left
