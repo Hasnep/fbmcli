@@ -3,7 +3,14 @@ A Facebook Messenger Command-line Interface written in Python.
 
 Currently uses a file called fbconfig.py to load configs.
 
+## Commands (none implemented yet)
+* `/switch` or `/s` - change to a different conversation
+* `/react` or `/r` - react to a message
+* `/like large/medium/small` or `/l l/m/s` - send a like
+* `/config` or `/c` - refresh configs
+
 ## Configs (none implemented yet)
+Default options first.
 ### Login
 * Log in with:
     * Cookies with password fallback
@@ -57,4 +64,5 @@ Currently uses a file called fbconfig.py to load configs.
 ### Notifications
 * Show notifications:
     * Do not show
+    * Play a sound
     * Show W10 notifications
