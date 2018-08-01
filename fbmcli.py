@@ -2,6 +2,7 @@ from login import *
 # from pprint import pprint
 from pdb import *  # use set_trace() to debug
 from datetime import datetime
+import os
 import tzlocal
 local_timezone = tzlocal.get_localzone()  # get timezone
 
@@ -133,10 +134,33 @@ def print_chatlog(chat, chat_names=None):
         print(timestamp_to_string(message.timestamp) + " " + chat_names.get(message.author) + ": " + message.text)
 
 
-selected_chat = choose_thread(option_n_threads)
-print_chatlog(selected_chat)
-client.logout()
+def send_message(message_text, thread_uid, thread_type):
+    client.send(Message(text=message_text), thread_id=thread_uid, thread_type=thread_type)
 
-# fetchThreadMessages
-# fetchUnread()
-# fetchAllUsers
+
+def message_input(chat):
+    """Input a chat and ask the user for a message or a command, then parse it, either returning the name of the command or None for a message."""
+    input_string = ""
+    while input_string == "":
+        input_string = input(option_prompt)
+    if input_string.lstrip()[0] == "/":
+        typed_command = input_string.lstrip().split(" ")[0][1:]
+        return typed_command
+    else:
+        send_message(input_string, chat.uid, chat.type)
+        return None
+
+
+selected_chat = choose_thread(option_n_threads)
+selected_chat_names = get_chat_names(selected_chat)
+print_chatlog(selected_chat, chat_names=selected_chat_names)
+command = None
+while not(command == "quit" or command == "q"):
+    command = message_input(selected_chat)
+    if command is None:
+        os.system("cls")
+        print_chatlog(selected_chat, chat_names=selected_chat_names)
+    elif command == "like" or command == "l":
+        print("Sending a like...")
+print("Goodbye!")
+client.logout()
