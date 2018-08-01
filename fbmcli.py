@@ -28,7 +28,7 @@ def get_thread_names(threads_object):
 
 
 def get_thread_uids(threads_object):
-    """Input a threads object and return the list of UIDs for each thread."""
+    """Input a threads object with multiple threads and return the list of UIDs for each thread."""
     uids_list = []
     for i in range(len(threads_object)):
         cur_thread = threads_object[i]
@@ -151,6 +151,7 @@ def message_input(chat):
         return None
 
 
+
 selected_chat = choose_thread(option_n_threads)
 selected_chat_names = get_chat_names(selected_chat)
 print_chatlog(selected_chat, chat_names=selected_chat_names)
@@ -160,6 +161,8 @@ while not(command == "quit" or command == "q"):
     if command is None:
         os.system("cls")
         print_chatlog(selected_chat, chat_names=selected_chat_names)
+    elif command == "switch" or command == "s":
+        selected_chat = None
     elif command == "like" or command == "l":
         print("Sending a like...")
 print("Goodbye!")
