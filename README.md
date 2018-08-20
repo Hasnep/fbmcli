@@ -1,28 +1,36 @@
 # fbmcli
-A Facebook Messenger Command-line Interface written in Python.
 
-Currently uses a file called fbconfig.py to load configs.
+A Facebook Messenger Command-line Interface written in Python 3 using the [fbchat](https://github.com/carpedm20/fbchat) module.
 
-## Commands (none implemented yet)
+## Commands
+
+* `/help` or `/?` - show help
 * `/switch` or `/s` - change to a different conversation
 * `/react` or `/r` - react to a message
 * `/like large/medium/small` or `/l l/m/s` - send a like
 * `/config` or `/c` - refresh configs
 * `/quit` or `/q` - quit
 
-## Configs (none implemented yet)
-Default options first.
+## Configs
+
+Most are unimplemented at the moment. Default options listed first.
+
 ### Login
-* Log in with:
-    * Cookies with password fallback
-    * Password
-    * Username and password
+
+* Save to file:
+   * Username
+   * Password
+   * Cookies
+    
 ### Choose thread
+
 * Show `x` threads in list
 * Show most recent message next to thread name:
     * Show
     * Do not show
+    
 ### Message info
+
 * Align my messages:
     * Left
     * Right
@@ -40,7 +48,9 @@ Default options first.
 * Show names for:
     * Only the first message in a group
     * Every message
+    
 ### Dates
+
 * Show dates:
     * Only when the date changes
     * Every message
@@ -49,7 +59,9 @@ Default options first.
     * Only after `x` minutes of inactivity
     * Every message
     * Do not show
+    
 ### Special messages
+
 * Show emojis as:
     * Unicode emojis
     * Unicode descriptions
@@ -57,7 +69,7 @@ Default options first.
     * Do not show
 * Show reactions as:
     * Unicode emojis
-    * ASCII emoticons (customisable)
+    * `ASCII` emoticons (customisable)
     * Text descriptions
     * Do not show
 * Show likes as:
@@ -67,8 +79,10 @@ Default options first.
 * Show stickers as:
     * Description
     * Do not show
+    
 ### Notifications
+
 * Show notifications:
     * Do not show
     * Play a sound
-    * Show W10 notifications
+    * Show Windows 10 notifications
