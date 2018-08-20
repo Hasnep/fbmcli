@@ -85,4 +85,4 @@ Default options listed first.
 * Show notifications:
     * Do not show
     * Play a sound
-    * Show W10 notifications
+    * Show Windows 10 notifications
