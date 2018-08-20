@@ -6,6 +6,8 @@ import os
 import tzlocal
 local_timezone = tzlocal.get_localzone()  # get timezone
 
+client = login(config)
+
 
 def timestamp_to_string(timestamp, tz=local_timezone):
     """Converts a timestamp string to a human readable string"""
@@ -20,7 +22,7 @@ def get_thread_names(threads_object):
     names_list = []
     for i in range(len(threads_object)):
         cur_thread = threads_object[i]
-        if cur_thread.type == ThreadType.USER and cur_thread.nickname is not None:
+        if cur_thread.type == fb.models.ThreadType.USER and cur_thread.nickname is not None:
             names_list.append(cur_thread.nickname)
         else:
             names_list.append(cur_thread.name)
@@ -54,7 +56,7 @@ def print_choose_a_thread(threads):
 
 def thread_id_input(n_threads):
     """Input a number of threads an return the index of the chosen thread or None if an invalid index is chosen."""
-    input_string = input(option_prompt)
+    input_string = input(config["prompt"])
     try:
         chosen_thread_index = int(float(input_string))
     except TypeError:
@@ -95,7 +97,7 @@ def choose_thread(n_threads):
 def get_chat_names(chat):
     """Input a user or a group to get a dict with everyone's UIDs and names."""
     chat_names = dict()
-    if chat.type == ThreadType.USER:
+    if chat.type == fb.models.ThreadType.USER:
         # TODO: make an option to have "ME:", yourname, or your nickname as your representation.
         # Set own name
         my_uid = client.uid
@@ -109,7 +111,7 @@ def get_chat_names(chat):
         else:
             chat_names[chat.uid] = chat.nickname
         return chat_names
-    elif chat.type == ThreadType.GROUP:
+    elif chat.type == fb.models.ThreadType.GROUP:
         for k_uid in chat.participants:
             if k_uid in chat.nicknames:
                 chat_names[k_uid] = chat.nicknames.get(k_uid)
@@ -135,14 +137,14 @@ def print_chatlog(chat, chat_names=None):
 
 
 def send_message(message_text, thread_uid, thread_type):
-    client.send(Message(text=message_text), thread_id=thread_uid, thread_type=thread_type)
+    client.send(fb.Message(text=message_text), thread_id=thread_uid, thread_type=thread_type)
 
 
 def message_input(chat):
     """Input a chat and ask the user for a message or a command, then parse it, either returning the name of the command or None for a message."""
     input_string = ""
     while input_string == "":
-        input_string = input(option_prompt)
+        input_string = input(config["prompt"])
     if input_string.lstrip()[0] == "/":
         typed_command = input_string.lstrip().split(" ")[0][1:]
         return typed_command
@@ -151,8 +153,7 @@ def message_input(chat):
         return None
 
 
-
-selected_chat = choose_thread(option_n_threads)
+selected_chat = choose_thread(config["n_threads"])
 selected_chat_names = get_chat_names(selected_chat)
 print_chatlog(selected_chat, chat_names=selected_chat_names)
 command = None
