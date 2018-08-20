@@ -1,8 +1,8 @@
 # fbmcli
 
-A Facebook Messenger Command-line Interface written in Python 3.
+A Facebook Messenger Command-line Interface written in Python 3 using the [fbchat](https://github.com/carpedm20/fbchat) module.
 
-## Commands (none implemented yet)
+## Commands
 
 * `/help` or `/?` - show help
 * `/switch` or `/s` - change to a different conversation
@@ -11,16 +11,16 @@ A Facebook Messenger Command-line Interface written in Python 3.
 * `/config` or `/c` - refresh configs
 * `/quit` or `/q` - quit
 
-## Configs (none implemented yet)
+## Configs
 
-Default options listed first.
+Most are unimplemented at the moment. Default options listed first.
 
 ### Login
 
-* Log in with:
-    * Cookies with password fallback
-    * Password
-    * Username and password
+* Save to file:
+   * Username
+   * Password
+   * Cookies
     
 ### Choose thread
 
@@ -69,7 +69,7 @@ Default options listed first.
     * Do not show
 * Show reactions as:
     * Unicode emojis
-    * ASCII emoticons (customisable)
+    * `ASCII` emoticons (customisable)
     * Text descriptions
     * Do not show
 * Show likes as:
