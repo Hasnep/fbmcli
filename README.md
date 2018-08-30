@@ -18,9 +18,9 @@ Most are unimplemented at the moment. Default options listed first.
 ### Login
 
 * Save to file:
-   * Username
-   * Password
-   * Cookies
+    * Username
+    * Password
+    * Cookies
     
 ### Choose thread
 
