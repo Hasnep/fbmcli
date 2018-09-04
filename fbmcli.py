@@ -59,17 +59,14 @@ def thread_id_input(n_threads):
     input_string = input(config["prompt"])
     try:
         chosen_thread_index = int(float(input_string))
-    except TypeError:
+        if not(0 <= chosen_thread_index < n_threads):
+            raise ValueError
+    except ValueError:
         max_thread = n_threads - 1
         print("Enter a number between 0 and %s." % max_thread)  # TODO: Add the ability to search.
         return None
     else:
-        if 0 <= chosen_thread_index < n_threads:
-            return chosen_thread_index
-        else:
-            max_thread = n_threads - 1
-            print("Enter a number between 0 and %s." % max_thread)
-            return None
+        return chosen_thread_index
 
 
 def uid_to_chat(input_uid):
