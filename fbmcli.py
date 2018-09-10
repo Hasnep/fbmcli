@@ -4,9 +4,13 @@ from pdb import *  # use set_trace() to debug
 from datetime import datetime
 import os
 import tzlocal
+def title_screen():
+    print(f"fbmcli - {config['fbmcli_version']}")
+title_screen()
 local_timezone = tzlocal.get_localzone()  # get timezone
 
 client = login(config)
+
 
 
 def timestamp_to_string(timestamp, tz=local_timezone):
