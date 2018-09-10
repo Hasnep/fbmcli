@@ -152,6 +152,7 @@ def message_input(chat):
 
 selected_chat = choose_thread(config["n_threads"])
 selected_chat_names = get_chat_names(selected_chat)
+os.system("cls")
 print_chatlog(selected_chat, chat_names=selected_chat_names)
 command = "switch"
 while not(command == "quit" or command == "q"):
@@ -160,6 +161,7 @@ while not(command == "quit" or command == "q"):
         os.system("cls")
         print_chatlog(selected_chat, chat_names=selected_chat_names)
     elif command == "switch" or command == "s":
+        os.system("cls")
         selected_chat = choose_thread(config["n_threads"])
         selected_chat_names = get_chat_names(selected_chat)
         print_chatlog(selected_chat, chat_names=selected_chat_names)
@@ -167,5 +169,5 @@ while not(command == "quit" or command == "q"):
         print("Sending a like...")
     else:
         print("{command} is not a valid command.".format(command=command))
-print("Goodbye!")
 client.logout()
+print("Goodbye!")
