@@ -10,7 +10,8 @@ title_screen()
 local_timezone = tzlocal.get_localzone()  # get timezone
 
 client = login(config)
-
+if client is None:
+    quit()
 
 
 def timestamp_to_string(timestamp, tz=local_timezone):

@@ -4,7 +4,7 @@ yaml = YAML()
 
 config_path = "fbmcliconfig.txt"
 
-config_defaults = {"fbmcli_version": "v0.1.028",
+config_defaults = {"fbmcli_version": "v0.1.029",
                    "username": "username@example.com",
                    "password": "password",
                    "cookies_path": "fbmcli.cookies",
@@ -50,3 +50,5 @@ def load_configs(_config_path: str = config_path) -> dict:
 
 
 config = load_configs()
+if config is None:
+    quit()
