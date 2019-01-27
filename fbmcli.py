@@ -1,12 +1,16 @@
-from login import *
-# from pprint import pprint
-from pdb import *  # use set_trace() to debug
-from datetime import datetime
 import os
 import tzlocal
+# from pprint import pprint
+from login import *
+from datetime import datetime
+
+
 def title_screen():
     print(f"fbmcli - {config['fbmcli_version']}")
+
+
 title_screen()
+
 local_timezone = tzlocal.get_localzone()  # get timezone
 
 client = login(config)
@@ -135,7 +139,8 @@ def print_chatlog(chat, chat_names=None):
     chatlog.reverse()
 
     for message in chatlog:
-        print(timestamp_to_string(message.timestamp) + " " + chat_names.get(message.author) + ": " + message.text)
+        if (message.text is not None):
+            print(timestamp_to_string(message.timestamp) + " " + chat_names.get(message.author) + ": " + message.text)
 
 
 def send_message(message_text, thread_uid, thread_type):
