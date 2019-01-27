@@ -4,7 +4,7 @@ yaml = YAML()
 
 config_path = "fbmcliconfig.txt"
 
-config_defaults = {"fbmcli_version": "v0.1.031",
+config_defaults = {"fbmcli_version": "v0.1.032",
                    "username": "username@example.com",
                    "password": "password",
                    "cookies_path": "fbmcli.cookies",

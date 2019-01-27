@@ -177,6 +177,8 @@ while not(command == "quit" or command == "q"):
         print_chatlog(selected_chat, chat_names=selected_chat_names)
     elif command == "like" or command == "l":
         print("Sending a like...")
+    elif command == "quit" or command == "q":
+        pass
     else:
         print("{command} is not a valid command.".format(command=command))
 client.logout()
