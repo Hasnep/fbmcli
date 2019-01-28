@@ -183,7 +183,19 @@ while not(command == "quit" or command == "q"):
         selected_chat_names = get_chat_names(selected_chat)
         print_chatlog(selected_chat, chat_names=selected_chat_names)
     elif command == "like" or command == "l":
-        send_like("large", selected_chat.uid, selected_chat.type)
+        if len(command_arguments) >= 1:
+            emoji_size_argument = command_arguments[0]
+            if emoji_size_argument == "large" or emoji_size_argument == "l":
+                emoji_size="large"
+            elif emoji_size_argument=="medium" or emoji_size_argument=="m":
+                emoji_size="medium"
+            elif emoji_size_argument=="small" or emoji_size_argument=="s":
+                emoji_size="small"
+            else:
+                print("Unkown emoji size: {argument_string}".format(argument_string=emoji_size_argument))
+        else:
+            emoji_size = "small"
+        send_like(emoji_size, selected_chat.uid, selected_chat.type)
     elif command == "quit" or command == "q":
         pass
     else:
