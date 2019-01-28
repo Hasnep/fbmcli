@@ -147,6 +147,10 @@ def send_message(message_text, thread_uid, thread_type):
     client.send(fb.Message(text=message_text), thread_id=thread_uid, thread_type=thread_type)
 
 
+def send_like(emoji_size, thread_uid, thread_type):
+    client.send(fb.models.Message(emoji_size=fb.models.EmojiSize.LARGE), thread_id=thread_uid, thread_type=thread_type)
+
+
 def message_input(chat):
     """Input a chat and ask the user for a message or a command, then parse it, either returning the name of the command or None for a message."""
     input_string = ""
@@ -176,7 +180,7 @@ while not(command == "quit" or command == "q"):
         selected_chat_names = get_chat_names(selected_chat)
         print_chatlog(selected_chat, chat_names=selected_chat_names)
     elif command == "like" or command == "l":
-        print("Sending a like...")
+        send_like("large", selected_chat.uid, selected_chat.type)
     elif command == "quit" or command == "q":
         pass
     else:
