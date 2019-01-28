@@ -148,20 +148,23 @@ def send_message(message_text, thread_uid, thread_type):
 
 
 def send_like(emoji_size, thread_uid, thread_type):
-    client.send(fb.models.Message(emoji_size=fb.models.EmojiSize.LARGE), thread_id=thread_uid, thread_type=thread_type)
-
+    emoji_size_dict = {"large": fb.models.EmojiSize.LARGE,
+                       "medium": fb.models.EmojiSize.MEDIUM,
+                       "small": fb.models.EmojiSize.SMALL}
+    client.send(fb.models.Message(emoji_size=emoji_size_dict[emoji_size]), thread_id=thread_uid, thread_type=thread_type)
 
 def message_input(chat):
-    """Input a chat and ask the user for a message or a command, then parse it, either returning the name of the command or None for a message."""
+    """Input a chat and ask the user for a message or a command, then parse it, either returning the name and arguments of the command or None for a message."""
     input_string = ""
     while input_string == "":
         input_string = input(config["prompt"])
     if input_string.lstrip()[0] == "/":
         typed_command = input_string.lstrip().split(" ")[0][1:]
-        return typed_command
+        command_arguments = input_string.lstrip().split(" ")[1:]
+        return typed_command, command_arguments
     else:
         send_message(input_string, chat.uid, chat.type)
-        return None
+        return None, None
 
 
 selected_chat = choose_thread(config["n_threads"])
@@ -170,7 +173,7 @@ os.system("cls")
 print_chatlog(selected_chat, chat_names=selected_chat_names)
 command = "switch"
 while not(command == "quit" or command == "q"):
-    command = message_input(selected_chat)
+    (command, command_arguments) = message_input(selected_chat)
     if command is None:
         os.system("cls")
         print_chatlog(selected_chat, chat_names=selected_chat_names)
